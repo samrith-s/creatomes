@@ -74,13 +74,16 @@ img {
     z-index: 1;
 }
 
-#tome-carousel img {
-    width: 150px;
-    height: 100px;
-    z-index: 2;
+tome-carousel {
+    display: table;
+    text-align: center;
+
 }
 
-#tome-carousel img:hover {
-    width: 165px;
-    height: 115px;
+#tome-carousel img {
+    width: 60%;
+    height: 60%;
+    z-index: 2;
+    display: table-cell;
+    vertical-align: middle;
 }

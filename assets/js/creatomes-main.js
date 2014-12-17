@@ -13,6 +13,8 @@ $(function() {
     });
 
     initMain();
+
+
 });
 
 function initGame() {
@@ -21,10 +23,26 @@ function initGame() {
 
 function initMain() {
     $("#flipbook-holder").hide();
-    $("#tome-carousel").append("<img src='" + config.imagePath + "tomes/creatome.png' />");
-    $("#tome-carousel").append("<img src='" + config.imagePath + "tomes/genesis.png' />");
-    $("#tome-carousel").append("<img src='" + config.imagePath + "tomes/substance.png' />");
-    $("#tome-carousel").append("<img src='" + config.imagePath + "tomes/beasts.png' />");
-    $("#tome-carousel").append("<img src='" + config.imagePath + "tomes/being.png' />");
-    $("#tome-carousel").append("<img src='" + config.imagePath + "tomes/war.png' />");
+
+    var init = 1;
+
+
+    for(var i=1; i<=6; i++) {
+        $("#tome-carousel").append("<img id='carousel-item-" + i + "' src='" + config.imagePath + "tomes/" + i + ".png' />");
+        $("#carousel-item-" + i).hide();
+    }
+
+    var showCarousel = function() { $("#carousel-item-" + init).fadeIn(); }
+    var hideCarousel = function() { $("#carousel-item-" + (init-1)).fadeOut(); }
+
+    showCarousel();
+
+    $("#prev").on('click', function() {
+        init++;
+        hideCarousel();
+        setTimeout(function() {showCarousel()}, 400);
+    })
+
+
+
 }

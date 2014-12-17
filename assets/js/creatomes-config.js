@@ -28,7 +28,7 @@ config.mainPage = {
     ],
     locations: [
         {name: "tome-carousel", states: [
-            {name: "default", representation: "<div></div>"}
+            {name: "default", representation: "<span id='prev'>PREV</span><span id='prev'>NEXT</span>"}
         ]},
         {name: "flipbook-holder", states: [
             {name: "default", representation: "<div id='flipbook'></div>"}

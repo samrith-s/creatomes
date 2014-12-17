@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="751f21b1-7801-406b-af69-631d16693375" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/creatomes-config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/js/standardLoad/ptotemy-game-adaptor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/creatomes-data.js" afterPath="$PROJECT_DIR$/assets/js/creatomes-data.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/tomes/beasts.png" afterPath="$PROJECT_DIR$/assets/img/tomes/4.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/tomes/being.png" afterPath="$PROJECT_DIR$/assets/img/tomes/5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/tomes/creatome.png" afterPath="$PROJECT_DIR$/assets/img/tomes/1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/tomes/genesis.png" afterPath="$PROJECT_DIR$/assets/img/tomes/2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/tomes/substance.png" afterPath="$PROJECT_DIR$/assets/img/tomes/3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/assets/img/tomes/war.png" afterPath="$PROJECT_DIR$/assets/img/tomes/6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/creatomes-config.js" afterPath="$PROJECT_DIR$/assets/js/creatomes-config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/creatomes-main.js" afterPath="$PROJECT_DIR$/assets/js/creatomes-main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/creatomes-style.css" afterPath="$PROJECT_DIR$/assets/css/creatomes-style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
@@ -13,10 +17,10 @@
     <ignored path="creatomes.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418820124710" ignored="false" />
-    <file path="/index.html" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418808877532" ignored="false" />
-    <file path="/creatomes-config.js" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418824446238" ignored="false" />
-    <file path="/creatomes-main.js" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418824972096" ignored="false" />
-    <file path="/creatomes-style.css" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418824946109" ignored="false" />
+    <file path="/index.html" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418825440844" ignored="false" />
+    <file path="/creatomes-config.js" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418827396324" ignored="false" />
+    <file path="/creatomes-main.js" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418828645201" ignored="false" />
+    <file path="/creatomes-style.css" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418828735618" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +43,7 @@
       <file leaf-file-name="creatomes-main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/creatomes-main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="23" selection-start="401" selection-end="401" vertical-scroll-proportion="0.0">
+            <state line="30" column="36" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -48,7 +52,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="105" selection-start="554" selection-end="554" vertical-scroll-proportion="-7.5">
+            <state line="23" column="0" selection-start="1141" selection-end="1141" vertical-scroll-proportion="-14.375">
               <folding />
             </state>
           </provider>
@@ -57,7 +61,7 @@
       <file leaf-file-name="creatomes-style.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/css/creatomes-style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="27" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.7058824">
+            <state line="88" column="18" selection-start="1373" selection-end="1373" vertical-scroll-proportion="0.9264706">
               <folding />
             </state>
           </provider>
@@ -66,7 +70,7 @@
       <file leaf-file-name="creatomes-config.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/creatomes-config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="31" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.0">
+            <state line="30" column="67" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -103,14 +107,14 @@
         <option value="$PROJECT_DIR$/assets/js/creatomes-data.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/js/creatomes-config.js" />
-        <option value="$PROJECT_DIR$/assets/css/creatomes-style.css" />
         <option value="$PROJECT_DIR$/assets/js/creatomes-main.js" />
+        <option value="$PROJECT_DIR$/assets/css/creatomes-style.css" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-1" />
-    <option name="y" value="-772" />
+    <option name="y" value="-4" />
     <option name="width" value="1368" />
     <option name="height" value="773" />
   </component>
@@ -300,7 +304,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-772" width="1368" height="773" extended-state="6" />
+    <frame x="-1" y="-4" width="1368" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -416,32 +420,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/tomes/substance.png">
+    <entry file="file://$PROJECT_DIR$/assets/img/tomes/3.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/tomes/genesis.png">
+    <entry file="file://$PROJECT_DIR$/assets/img/tomes/2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/tomes/creatome.png">
+    <entry file="file://$PROJECT_DIR$/assets/img/tomes/1.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/tomes/being.png">
+    <entry file="file://$PROJECT_DIR$/assets/img/tomes/4.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/tomes/beasts.png">
+    <entry file="file://$PROJECT_DIR$/assets/img/tomes/6.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/img/tomes/war.png">
+    <entry file="file://$PROJECT_DIR$/assets/img/tomes/5.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -453,30 +457,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/creatomes-main.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="23" selection-start="401" selection-end="401" vertical-scroll-proportion="0.0">
+        <state line="23" column="0" selection-start="1141" selection-end="1141" vertical-scroll-proportion="-14.375">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/creatomes-config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="31" selection-start="1340" selection-end="1340" vertical-scroll-proportion="0.0">
+        <state line="30" column="67" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/assets/js/creatomes-main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="105" selection-start="554" selection-end="554" vertical-scroll-proportion="-7.5">
+        <state line="30" column="36" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/creatomes-style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="27" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.7058824">
+        <state line="88" column="18" selection-start="1373" selection-end="1373" vertical-scroll-proportion="0.9264706">
           <folding />
         </state>
       </provider>
