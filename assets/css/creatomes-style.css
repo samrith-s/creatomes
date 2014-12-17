@@ -1,0 +1,86 @@
+
+/* -------------- Please do not change the CSS for the below elements ----------- */
+html, body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+#ptotemy-game {
+    position: fixed;
+    width: 640px;
+    height: 480px;
+    margin:auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#log {
+    display: none;
+    pointer-events: none;
+}
+
+#entities, #items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 480px;
+    pointer-events: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.environment, .location, .entity, .item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* -------------- You can change CSS of elements below this as will ----------- */
+
+#launchpad {
+    background: rgba(1,1,1,1);
+}
+
+#main-logo span{
+    position: relative;
+    top: 49%;
+    left: 38%;
+    color: rgba(1,1,1,1);
+    font-family: "Times New Roman";
+    font-size: 35px;
+}
+
+
+#mainPage {
+    display:none;
+}
+#start span {
+    position: relative;
+    color: whitesmoke;
+    top: 92%;
+    left: 85%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#tome-carousel img {
+    width: 150px;
+    height: 100px;
+    z-index: 2;
+}
+
+#tome-carousel img:hover {
+    width: 165px;
+    height: 115px;
+}
