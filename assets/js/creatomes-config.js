@@ -26,14 +26,40 @@ config.mainPage = {
     states: [
         {name: "default", representation: "<img src='http://www.hdwallpapersinn.com/wp-content/uploads/2014/11/fantasy-world-artwork-art-background-wallpapers-images-array-wallwuzz-hd-wallpaper-5273.jpg'/>"}
     ],
-    locations: [
-        {name: "tome-carousel", states: [
-            {name: "default", representation: "<span id='prev'>PREV</span><span id='prev'>NEXT</span>"}
-        ]},
-        {name: "flipbook-holder", states: [
-            {name: "default", representation: "<div id='flipbook'></div>"}
-        ]}
-    ]
+    locations:
+        function() {
+            var allItems = []
+            for(var i=1; i<=6; i++)
+            {
+                allItems.push({
+                    name: "book" + i,
+                    states: [
+                        {
+                            name: "unlocked",
+                            representation: "<img class='carousel-item' src='" + config.imagePath + "tomes/" + i + ".png' />"
+                        },
+                        {
+                            name: "default",
+                            representation: "<img class='carousel-item' src='" + config.imagePath + "tomes/_" + i + ".png' />"
+                        }
+                    ]
+                });
+            }
+            allItems.push({name: "prev-button", states: [
+                {name: "default", representation: "<img src='" + config.imagePath + "prev.png' />"}
+            ]});
+            allItems.push({name: "next-button", states: [
+                {name: "default", representation: "<img src='" + config.imagePath + "next.png' />"}
+            ]});
+            allItems.push({name: "tome-name", states: [
+                {name: "default", representation: "<span></span>"}
+            ]});
+            allItems.push({name: "flipbook", states: [
+                {name: "default", representation: ""}
+            ]});
+
+            return allItems;
+        }()
 }
 
 config.brewPot = {
