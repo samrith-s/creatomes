@@ -111,11 +111,16 @@ function initFlipbook(init) {
     $("#prev-button").fadeOut();
     $("#next-button").fadeOut();
     $("#tome-name").fadeOut();
+
     setTimeout(function(){ $("#flipbook").fadeIn(); }, 400);
 
-    $this = game.tomes[init-1].pages;
-    for(var i=0; i< $this.length; i++) {
-        $("#flipbook").append("<div>" + $this[i] + "</div>");
+    if(init==1) {
+        for(var j=0; j<game.tomes.length; j++) {
+            $this = game.tomes[j].pages;
+            for(var i=0; i<$this.length; i++) {
+                $("#flipbook").append("<div>" + $this[i] + "</div>");
+            }
+        }
     }
 
     flipbookObservers();
