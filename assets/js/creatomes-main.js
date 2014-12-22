@@ -40,13 +40,12 @@ function initTome() {
             "<a href='#/page/" + pgNo + "' class='tome-links less-opacity'>" + elements.selected[i] + "</a></div>");
 
         var elem = $getElemByName(elements.selected[i]);
-        console.log(elem);
 
         $tome.append(
             "<div div align='center'>" +
                 "<h1>" + elem.name + "</h1>" +
                 "<img src='"  + elem.image + "' />" +
-                "<p class='create-btn' uID='" + elem.name + "'>CREATE THIS!</p>" +
+                "<p class='create-btn' uID='" + elem.sequence + "'>CREATE THIS!</p>" +
                 "</div>"
         );
     }
@@ -68,6 +67,9 @@ function initTome() {
 function initCreateScreen(uID) {
     console.log("Init Create Screen");
     var prime = elements.primary;
+    var brewPotStr = "000000000000000";
+
+    console.log(uID);
 
     $("#tome").effect("drop");
     setTimeout(function() { $("#mainPage").fadeOut(); $("#createScreen").fadeIn(); }, 400);
@@ -75,8 +77,8 @@ function initCreateScreen(uID) {
     for(var n=3; n>0; n--) {
         for(var i=0; i<5; i++) {
             var cur = prime.pop();
-            console.log(cur);
             var temp = $("#element-" + cur.name);
+            temp.attr("uID", cur.sequence);
             if(n==3) { lx = 5; ly = 2 + (i*16); }
             if(n==2) { lx = 19 + (i*13); ly = 2; }
             if(n==1) { lx = 85; ly = 2 + (i*16); }
@@ -88,28 +90,70 @@ function initCreateScreen(uID) {
         }
     }
 
+    playGame(uID, brewPotStr);
+}
+
+function playGame(uID, brewPotStr) {
+
+    var creatable = $getElemBySeq(uID);
+
     $(".primary-elements").unbind('click').on('click', function() {
-        var temp = $(this).clone().appendTo($(this).parent());
-        $(this).css({opacity: 0.5});
-        var pos = $("#animate-reference").position();
-        console.log(pos);
-        temp.animate({
-            top: pos.top,
-            left: pos.left,
-            height: "toggle",
-            width: "toggle"
-        }, 1000);
+        var temp = $(this).clone().appendTo($(this).parent()).addClass("this-clone-" + $(this).attr("id"));
+        var thisElem = $("#" + $(this).attr("id"));
+        var uID = thisElem.attr("uID");
+        console.log(thisElem);
+        var pos;
+        if(!thisElem.hasClass("less-opacity")) {
+            thisElem.addClass("less-opacity");
+            pos = $("#animate-reference").position();
+            temp.animate({
+                top: pos.top,
+                left: pos.left
+                //            height: "toggle",
+                //            width: "toggle"
+            }, 500, "swing", function() {
+                temp.fadeOut();
+                brewPotStr = $setCharAt(brewPotStr, (parseInt(uID)-1), "1");
+            });
+        }
+        else {
+            pos = thisElem.position();
+            temp = $(".this-clone-" + $(this).attr("id"));
+            temp.fadeIn();
+            setTimeout(function() {
+                temp.animate({
+                    top: pos.top,
+                    left: pos.left
+                }, 500, "swing", function() {
+                    temp.remove();
+                    thisElem.removeClass("less-opacity");
+//                    thisElem.css({opacity:1});
+                    brewPotStr = $setCharAt(brewPotStr, parseInt(uID)-1, "0");
+                });
+            }, 400);
+        }
+    });
+
+    $("#brew-button").unbind('click').on('click', function() {
+        console.log("The Combo: " + creatable.combo);
+        console.log("The Brewpot's String: " + brewPotStr);
+        if(brewPotStr == creatable.combo) {
+            $("#brew-pot").effect("bounce", 1500);
+            console.log("Brew IF!");
+        }
+        else {
+            $("#brew-pot").effect("blink", 1500);
+            console.log("Brew ELSE!")
+        }
     })
 
 }
-
 
 /*------- Helper functions ---------- */
 $setCharAt = function (str,index,chr) {
     if(index > str.length-1) return str;
     return str.substr(0,index) + chr + str.substr(index+1);
 }
-
 $getElemByName = function(name) {
     var elem = [];
 
@@ -118,6 +162,17 @@ $getElemByName = function(name) {
 
     var ret = $.grep(elem, function( n, i ) {
         return n.name == name;
+    });
+    return ret[0];
+}
+$getElemBySeq = function(uID) {
+    var elem = [];
+
+    for(var i=0; i<elements.creatables.length; i++)
+        elem.push(elements.creatables[i]);
+
+    var ret = $.grep(elem, function( n, i ) {
+        return n.sequence == uID;
     });
     return ret[0];
 }

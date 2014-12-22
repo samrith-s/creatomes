@@ -66,6 +66,9 @@ config.createScreen = {
             allLevels.push({name: "animate-reference", states: [
                 {name: "default", representation: ""}
             ]});
+            allLevels.push({name: "brew-button", states: [
+                {name: "default", representation: "BREW!"}
+            ]});
                 return allLevels;
             }()
 //
