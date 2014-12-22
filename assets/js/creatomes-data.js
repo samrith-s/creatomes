@@ -1,125 +1,110 @@
-game = {}
+elements = {}
 
-$path_basic         = config.imagePath + "elements/";
-$path_creatables    = config.imagePath + "creatables/";
+$path_basic         = "assets/img/" + "elements/";
+$path_creatables    = "assets/img/" + "creatables/";
 
-game.elements.primary = [
+//selected elements
+elements.selected =
+    [
+        "Worlds",
+        "Basilisk",
+        "Unicorn",
+        "Sapien",
+        "Dartan",
+        "Air Blade",
+        "Pyrocles",
+        "Pharon",
+        "Hell Star",
+        "Dragon"
+    ];
 
-    //primary elements
+//primary elements
+elements.primary = [
+
     {
         sequence: 1,
-        tome_id: 0,
         name: "Fire",
-        image: $path_basic +  "fire.png",
-        combo: "0"
+        image: $path_basic +  "fire.png"
     },
     {
         sequence: 2,
-        tome_id: 0,
         name: "Water",
-        image: $path_basic + "water.png",
-        combo: "0"
+        image: $path_basic + "water.png"
     },
     {
         sequence: 3,
-        tome_id: 0,
         name: "Earth",
-        image: $path_basic + "earth.png",
-        combo: "0"
+        image: $path_basic + "earth.png"
     },
     {
         sequence: 4,
-        tome_id: 0,
         name: "Air",
-        image: $path_basic + "air.png",
-        combo: "0"
+        image: $path_basic + "air.png"
     },
     {
         sequence: 5,
-        tome_id: 0,
         name: "Light",
-        image: $path_basic + "light.png",
-        combo: "0"
+        image: $path_basic + "light.png"
     },
     {
         sequence: 6,
-        tome_id: 0,
         name: "Space",
-        image: $path_basic + "space.png",
-        combo: "0"
+        image: $path_basic + "space.png"
     },
     {
         sequence: 7,
-        tome_id: 0,
         name: "Stardust",
-        image: $path_basic + "stardust.png",
-        combo: "0"
+        image: $path_basic + "stardust.png"
     },
     {
         sequence: 8,
-        tome_id: 0,
         name: "Darkonium",
-        image: $path_basic + "darkonium.png",
-        combo: "0"
+        image: $path_basic + "darkonium.png"
     },
     {
         sequence: 9,
-        tome_id: 0,
         name: "Stone",
-        image: $path_basic + "stone.png",
-        combo: "0"
+        image: $path_basic + "stone.png"
     },
     {
         sequence: 10,
-        tome_id: 0,
         name: "Metal",
-        image: $path_basic + "metal.png",
-        combo: "0"
+        image: $path_basic + "metal.png"
     },
     {
         sequence: 11,
-        tome_id: 0,
         name: "Venom",
-        image: $path_basic + "venom.png",
-        combo: "0"
+        image: $path_basic + "venom.png"
     },
     {
         sequence: 12,
-        tome_id: 0,
         name: "Death",
-        image: $path_basic + "death.png",
-        combo: "0"
+        image: $path_basic + "death.png"
     },
     {
         sequence: 13,
-        tome_id: 0,
         name: "Tree",
-        image: $path_basic + "tree.png",
-        combo: "0"
+        image: $path_basic + "tree.png"
     },
     {
         sequence: 14,
-        tome_id: 0,
         name: "Life",
-        image: $path_basic + "life.png",
-        combo: "0"
+        image: $path_basic + "life.png"
     },
     {
         sequence: 15,
-        tome_id: 0,
         name: "Bone",
-        image: $path_basic + "bone.png",
-        combo: "0"
+        image: $path_basic + "bone.png"
     }
-]
+];
 
-//these are the creatable elements.
-game.elements.creatables = [
+//creatable elements.
+elements.creatables = [
     {
         sequence: 1,
         name: "Worlds",
         image: $path_creatables + "worlds.png",
-        combo: "",
+        combo: "001111000000000",
         lore: "The dark empty universe began seeing worlds of blue and brown.",
         reward: 10
     },
@@ -127,7 +112,7 @@ game.elements.creatables = [
         sequence: 2,
         name: "Lava",
         image: $path_creatables + "lava.png",
-        combo: "01101",
+        combo: "101000000000000",
         lore: "It bubbled at the centre of the world, created from fiery rock.",
         reward: 10
     },
@@ -135,7 +120,7 @@ game.elements.creatables = [
         sequence: 3,
         name: "Wood",
         image: $path_creatables + "wood.png",
-        combo: "001100",
+        combo: "000000000001100",
         lore: "Obtained from the first form of life and its destruction.",
         reward: 10
     },
@@ -143,23 +128,23 @@ game.elements.creatables = [
         sequence: 4,
         name: "Vapour",
         image: $path_creatables + "vapour.png",
-        combo: "11110",
+        combo: "110000000000000",
         lore: "The union of two opposing basic elements resulted in steam.",
         reward: 10
     },
     {
         sequence: 5,
-        name: "Pryocles",
-        image: $path_creatables + "pryocles.png",
-        combo: "01110",
-        lore: "When life was bestowed to steam, Pryocles were born.",
+        name: "Pyrocles",
+        image: $path_creatables + "pyrocles.png",
+        combo: "110000000000010",
+        lore: "When life was bestowed to steam, Pyrocles were born.",
         reward: 10
     },
     {
         sequence: 6,
         name: "Minotaur",
         image: $path_creatables + "minotaur.png",
-        combo: "10100000",
+        combo: "100000010101000",
         lore: "The Minotaur was born from the fiery ashes of dead beasts, reinforced with armor for skin, having a heart of evil.",
         reward: 10
     },
@@ -167,7 +152,7 @@ game.elements.creatables = [
         sequence: 7,
         name: "Leviathan",
         image: $path_creatables + "leviathan.png",
-        combo: "10100000",
+        combo: "010000010100000",
         lore: "From the sea it was born, devouring ships of steel, for it too was made of such a strong substance.",
         reward: 10
     },
@@ -175,7 +160,7 @@ game.elements.creatables = [
         sequence: 8,
         name: "Basilisk",
         image: $path_creatables + "basilisk.png",
-        combo: "10100000",
+        combo: "001000010010000",
         lore: "Poison and evil energy combined to create the king of serpents - The Basilisk.",
         reward: 10
     },
@@ -183,7 +168,7 @@ game.elements.creatables = [
         sequence: 9,
         name: "Graven",
         image: $path_creatables + "graven.png",
-        combo: "10100000",
+        combo: "000100010100000",
         lore: "Evil undead ravens that swarmed the skies with bodies of razor blades.",
         reward: 10
     },
@@ -191,7 +176,7 @@ game.elements.creatables = [
         sequence: 10,
         name: "Gorgon",
         image: $path_creatables + "gorgon.png",
-        combo: "10100000",
+        combo: "001000001010010",
         lore: "A creature of flight, made of a slow and strong substance, the Gorgon had hair made of live serpents.",
         reward: 10
     },
@@ -199,7 +184,7 @@ game.elements.creatables = [
         sequence: 11,
         name: "Unicorn",
         image: $path_creatables + "unicorn.png",
-        combo: "10100000",
+        combo: "000010100000011",
         lore: "Born of the first creation, the essence of life and magic.",
         reward: 10
     },
@@ -207,7 +192,7 @@ game.elements.creatables = [
         sequence: 12,
         name: "Cerberus",
         image: $path_creatables + "cerberus.png",
-        combo: "10100000",
+        combo: "101000010100001",
         lore: "Said to be born in the blazing pits of the underworld, this hell-hound was pure evil and tore the flesh off of its victims with ease.",
         reward: 10
     },
@@ -215,7 +200,7 @@ game.elements.creatables = [
         sequence: 13,
         name: "Anasazi",
         image: $path_creatables + "anasazi.png",
-        combo: "10100000",
+        combo: "000010100000001",
         lore: "The wise wolf of magic, faster than the wind, this beast roamed the lands in packs.",
         reward: 10
     },
@@ -223,7 +208,7 @@ game.elements.creatables = [
         sequence: 14,
         name: "Harbringer",
         image: $path_creatables + "harbringer.png",
-        combo: "10100000",
+        combo: "000010100100000",
         lore: "Stronger than stone yet faster than the wind, these radiant horses were truly magical.",
         reward: 10
     },
@@ -231,7 +216,7 @@ game.elements.creatables = [
         sequence: 15,
         name: "Dragon",
         image: $path_creatables + "dragon.png",
-        combo: "10100000",
+        combo: "100110100000000",
         lore: "Made of energy and magic, these large creatures rose up from the underground caverns to fly amongst the beasts of the sky.",
         reward: 10
     },
@@ -239,7 +224,7 @@ game.elements.creatables = [
         sequence: 16,
         name: "Sapien",
         image: $path_creatables + "sapien.png",
-        combo: "10100000",
+        combo: "001000000000011",
         lore: "Sapiens reigned on the surface of the world, created from the essence of life and a substance that had no discernible magical properties.",
         reward: 10
     },
@@ -395,4 +380,4 @@ game.elements.creatables = [
         lore: "A broadsword filled with evil, legend said it was embedded in a substance stronger and slower than most.",
         reward: 10
     }
-]
+];

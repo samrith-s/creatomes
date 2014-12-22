@@ -15,10 +15,8 @@ $(function() {
     $("#start span").unbind('click').on("click", function() {
         $("#launchpad").fadeOut();
         $("#mainPage").fadeIn();
-        //initCreateScreen();
+        initTome();
     });
-
-    initCarousel();
 
 
 });
@@ -27,178 +25,82 @@ function initGame() {
 
 }
 
-function initCarousel() {
-    $("#flipbook").fadeOut();
+function initTome() {
+    $tome = $("#tome");
+    $tome.fadeIn(1500);
 
-    var init = 1;
+    $tome.empty();
+    $tome.append("<div></div>");
+    $tome.append("<div align='center' id='toc'><h1>Table of Contents</h1></div>");
 
-    for(var i=0; i<game.tomes.length; i++) {
-        $("#book" + (i+1)).addClass("books");
+    for(var i=0; i<elements.selected.length; i++) {
+        var pgNo = 3 + parseInt(i);
+
+        $("#toc").append("<div>" +
+            "<a href='#/page/" + pgNo + "' class='tome-links less-opacity'>" + elements.selected[i] + "</a></div>");
+
+        var elem = $getElemByName(elements.selected[i]);
+        console.log(elem);
+
+        $tome.append(
+            "<div div align='center'>" +
+                "<h1>" + elem.name + "</h1>" +
+                "<img src='"  + elem.image + "' />" +
+                "<p class='create-btn' uID='" + elem.name + "'>CREATE THIS!</p>" +
+                "</div>"
+        );
     }
 
+    $("#toc div").find("a").eq(0).removeClass("less-opacity");
 
-    $(".books").hide();
-
-    mainPage.book1.setState("unlocked");
-    $("#book" + init).fadeIn();
-    $("#tome-name span").append(game.tomes[init-1].name);
-    carouselObservers(init);
-}
-
-function carouselObservers(init) {
-
-    var showCarousel = function() { $("#book" + init).fadeIn(); }
-    var hideCarousel = function() { $("#book" + (init)).fadeOut(); }
-    var appendTomeName = function() {
-        $("#tome-name span").fadeOut();
-        setTimeout(function(){
-            if(!game.tomes[init-1].completed)
-                $("#tome-name span").text(game.tomes[init-1].message);
-            else
-                $("#tome-name span").text(game.tomes[init-1].name);
-        }, 400);
-        $("#tome-name span").fadeIn();
-    }
-    var checkButtonVisibility = function () {
-        if(init==1)
-            $("#prev-button").css({visibility: "hidden"});
-        else if(init==6)
-            $("#next-button").css({visibility: "hidden"});
-        else
-            $("#prev-button, #next-button").css({visibility: "visible"});
-    }
-
-//    $(".books").fadeIn();
-    $("#prev-button").fadeIn();
-    $("#next-button").fadeIn();
-    $("#tome-name").fadeIn();
-
-    checkButtonVisibility();
-
-    $("#prev-button").unbind('click').on('click', function() {
-        hideCarousel();
-        init--;
-        setTimeout(function() {showCarousel()}, 400);
-        carouselObservers(init);
-        checkButtonVisibility();
-        appendTomeName();
-    }).delay(400);
-    $("#next-button").unbind('click').on('click', function() {
-        hideCarousel();
-        init++;
-        setTimeout(function() {showCarousel()}, 400);
-        carouselObservers(init);
-        checkButtonVisibility();
-        appendTomeName();
-    }).delay(400);
-
-    $(".books").unbind('click').on('click', function() {
-        initFlipbook(init);
-    });
-
-//    var st = false;
-//    $("#tome-name").unbind('click').on('click', function() {
-//        var bk = "book" + init;
-//        if(!game.tomes[init-1].completed) {
-//            st = true;
-//            game.tomes[init-1].completed = st;
-//            appendTomeName();
-//            mainPage[bk].setState("unlocked");
-//        }
-//        else {
-//            st = false;
-//            game.tomes[init-1].completed = st;
-//            appendTomeName();
-//            mainPage[bk].setState("default");
-//        }
-//    });
-
-    $bk = "book"  + init;
-    if(init==1) {
-
-        mainPage[$bk].setState("unlocked")
-    }
-    else if(game.tomes[init-1].completed) {
-        mainPage[$bk].setState("unlocked");
-    }
-    else {
-        mainPage[$bk].setState("default");
-    }
-
-
-}
-
-function initFlipbook(init) {
-
-    $(".books").fadeOut();
-    $("#prev-button").fadeOut();
-    $("#next-button").fadeOut();
-    $("#tome-name").fadeOut();
-    $("#tome-name span").text("");
-
-    setTimeout(function(){ $("#flipbook").fadeIn(); }, 400);
-
-    if(init==1) {
-        for(var j=0; j<game.tomes.length; j++) {
-            $this = game.tomes[j].pages;
-            for(var i=0; i<$this.length; i++) {
-                $("#flipbook").append("<div>" + $this[i] + "</div>");
-            }
-        }
-    }
-    else {
-        $("#flipbook").empty();
-        $("#flipbook").append("<div></div>");
-        $("#flipbook").append("<div id='toc'><h1>Table of Contents</h1></div>");
-        var elems = $getTomeObjects(init-1);
-        console.log(elems);
-
-        for(var i=0; i<elems.length; i++) {
-            $("#toc").append("<p>" + elems[i].name + "</p>");
-        }
-
-    }
-
-    flipbookObservers(init);
-}
-
-function flipbookObservers(init) {
-
-    $("#mainPageBg").removeClass("no-click");
-
-    $("#flipbook").booklet({
+    $tome.booklet({
         tabs: true,
-        tabHeight: 20,
-        tabWidth: 180,
         hash: true
     });
 
-    $("#mainPageBg").unbind('click').on('click', function() {
-        $("#flipbook").effect("drop", 500);
-        setTimeout(function() {
-            initCarousel(init);
-            $("#flipbook").empty();
-        }, 500);
-
-        $("#mainPageBg").addClass("no-click");
-
-    }) ;
-
-    $(".continue-btn").unbind('click').on('click', function() {
-       initCreateScreen();
+    $(".create-btn").unbind('click').on('click', function() {
+        var uID = $(this).attr("uID");
+        initCreateScreen(uID);
     });
+
 }
 
-function initCreateScreen(init) {
+function initCreateScreen(uID) {
     console.log("Init Create Screen");
-    $("#flipbook").effect("drop");
+    var prime = elements.primary;
+
+    $("#tome").effect("drop");
     setTimeout(function() { $("#mainPage").fadeOut(); $("#createScreen").fadeIn(); }, 400);
 
-    for(var i=0; i< game.tomes[1].elements.length; i++) {
-        var elem = $getElemByName(game.tomes[1].elements[i]);
-        var img = "<img src='" + elem.image + "' class='element-img' />";
-        $("#elements-container").append(img);
+    for(var n=3; n>0; n--) {
+        for(var i=0; i<5; i++) {
+            var cur = prime.pop();
+            console.log(cur);
+            var temp = $("#element-" + cur.name);
+            if(n==3) { lx = 5; ly = 2 + (i*16); }
+            if(n==2) { lx = 19 + (i*13); ly = 2; }
+            if(n==1) { lx = 85; ly = 2 + (i*16); }
+            temp.addClass("primary-elements");
+            temp.css({
+                top: parseInt(ly) + "%",
+                left: parseInt(lx) + "%"
+            })
+        }
     }
+
+    $(".primary-elements").unbind('click').on('click', function() {
+        var temp = $(this).clone().appendTo($(this).parent());
+        $(this).css({opacity: 0.5});
+        var pos = $("#animate-reference").position();
+        console.log(pos);
+        temp.animate({
+            top: pos.top,
+            left: pos.left,
+            height: "toggle",
+            width: "toggle"
+        }, 1000);
+    })
+
 }
 
 
@@ -209,15 +111,13 @@ $setCharAt = function (str,index,chr) {
 }
 
 $getElemByName = function(name) {
-    var ret = $.grep(game.elements, function( n, i ) {
+    var elem = [];
+
+    for(var i=0; i<elements.creatables.length; i++)
+        elem.push(elements.creatables[i]);
+
+    var ret = $.grep(elem, function( n, i ) {
         return n.name == name;
     });
     return ret[0];
-}
-
-$getTomeObjects = function(tome_id) {
-    var ret = $.grep(game.elements, function( n, i ) {
-        return n.tome_id == tome_id;
-    });
-    return ret;
 }

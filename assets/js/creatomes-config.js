@@ -1,8 +1,6 @@
 
 var config = {};
 
-config.imagePath = "assets/img/";
-
 config.initMana = 0;
 config.initPower = 0;
 
@@ -32,40 +30,12 @@ config.mainPage = {
             representation: "<img id='mainPageBg' src='http://www.hdwallpapersinn.com/wp-content/uploads/2014/11/fantasy-world-artwork-art-background-wallpapers-images-array-wallwuzz-hd-wallpaper-5273.jpg'/>"
         }
     ],
-    locations:
-        function() {
-            var allItems = []
-            for(var i=1; i<=6; i++)
-            {
-                allItems.push({
-                    name: "book" + i,
-                    states: [
-                        {
-                            name: "unlocked",
-                            representation: "<img class='carousel-item' src='" + config.imagePath + "tomes/" + i + ".png' />"
-                        },
-                        {
-                            name: "default",
-                            representation: "<img class='carousel-item' src='" + config.imagePath + "tomes/_" + i + ".png' />"
-                        }
-                    ]
-                });
-            }
-            allItems.push({name: "prev-button", states: [
-                {name: "default", representation: "<img src='" + config.imagePath + "prev.png' />"}
-            ]});
-            allItems.push({name: "next-button", states: [
-                {name: "default", representation: "<img src='" + config.imagePath + "next.png' />"}
-            ]});
-            allItems.push({name: "tome-name", states: [
-                {name: "default", representation: "<span></span>"}
-            ]});
-            allItems.push({name: "flipbook", states: [
-                {name: "default", representation: ""}
-            ]});
+    locations: [
+        {name: "tome", states: [
+            {name: "default", representation: ""}
+        ]}
+    ]
 
-            return allItems;
-        }()
 }
 
 config.createScreen = {
@@ -76,49 +46,40 @@ config.createScreen = {
             representation: "<img src='http://www.hdwallpapersinn.com/wp-content/uploads/2014/11/fantasy-world-artwork-art-background-wallpapers-images-array-wallwuzz-hd-wallpaper-5273.jpg'/>"
         }
     ],
-    locations: [
-        {name: "info-panel", states: [
-            {name: "default", representation: ""}
-        ]},
-        {name: "brew-pot", states: [
-            {name: "default", representation: ""}
-        ]},
-        {name: "elements-container", states: [
-            {name: "default", representation: ""}
-        ]}
-    ]
+    locations: function () {
+            var allLevels = [];
+            for (var i = 0; i < elements.primary.length; i++) {
+                allLevels.push({
+                    name: "element-" + elements.primary[i].name,
+                    states: [
+                        {name: "default", representation: "<img src='" + elements.primary[i].image + "' />"}
+                    ]});
+            }
 
+            allLevels.push({name: "info-panel", states: [
+                {name: "default", representation: ""}
+            ]});
+
+            allLevels.push({name: "brew-pot", states: [
+                {name: "default", representation: "<img src='assets/img/cauldron.png' />"}
+            ]});
+            allLevels.push({name: "animate-reference", states: [
+                {name: "default", representation: ""}
+            ]});
+                return allLevels;
+            }()
+//
+//        {name: "elements-container-1", states: [
+//            {name: "default", representation: ""}
+//        ]},
+//        {name: "elements-container-2", states: [
+//            {name: "default", representation: ""}
+//        ]},
+//        {name: "elements-container-3", states: [
+//            {name: "default", representation: ""}
+//        ]},
+//        {name: "animate-reference", states: [
+//            {name: "default", representation: ""}
+//        ]}
+//    ]
 }
-
-config.brewPot = {
-    type: "environment",
-    states: [
-        {name: "default", representation: "<img src='xyz' />"}
-    ],
-    locations: [
-        {name: "qt-meter-empty"},
-        {name: "limit"},
-        {name: "qt-meter-filled"},
-        {name: "qt-meter-indicator", states: [
-            {name: "qt-meter-indicator-text", representation: "<span>mood</span>"}
-        ]}
-    ]
-};
-
-
-config.meterOverlay = {
-    type: "environment",
-    states: [
-        {name: "default"}
-    ],
-    locations: [
-        {name: "qt-meter-overlay"}
-    ]
-}
-
-config.player = {
-    type: "entity",
-    states: [
-        {name: "default", representation: "<img id='qt-player-img' src='./img/player.png' />"}
-    ]
-};

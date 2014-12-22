@@ -1,10 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
 
 /* -------------- Please do not change the CSS for the below elements ----------- */
 html, body {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    font-family: 'Lato', Calibri, Arial, sans-serif;
+    font-family: 'Covered By Your Grace', cursive;
 }
 
 #ptotemy-game {
@@ -89,50 +90,11 @@ img {
     height: 100%:
 }
 
-.no-click {
-    pointer-events: none;
-}
+.no-click       { pointer-events: none; }
+.less-opacity   { opacity: 0.4; }
 
-#flipbook {
-    font-size: 13px;
-
-}
-
-#prev-button {
-    width: 10%;
-    height: 10%;
-    top: 40%;
-    left: 5%;
-    display: block;
-    float:left;
-    cursor: pointer;
-}
-
-#next-button {
-    width: 10%;
-    height: 10%;
-    top: 40%;
-    left: 85%;
-    display:block;
-    float:left;
-    cursor: pointer;
-}
-
-#tome-name span {
-    color: whitesmoke;
-    padding: 3%;
-    background: rgba(1,1,1,0.6);
-    border-radius: 5px;
-    top: 0;
-    left: 0;
-}
-
-#tome-name {
-    height: 10%;
-    width: 100%;
-    text-align: center;
-    top: 87%;
-    cursor: pointer;
+#tome {
+    display: none;
 }
 
 #createScreen {
@@ -146,19 +108,55 @@ img {
 }
 
 #brew-pot {
-    height: 80%;
-    width: 60%;
+    height: 60%;
+    width: 50%;
+    top:30%;
+    left: 25%;
     /*background: rgba(155, 11, 153, 0.7);*/
 }
 
-#elements-container {
-    height: 80%;
-    width: 40%;
-    left: 60%;
-    /*background: rgba(5, 111, 13, 0.7);*/
+#animate-reference {
+    width: 1px;
+    height: 1px;
+    top: 60%;
+    left: 50%;
+    background-color: red;
+    position: absolute;
+}
+
+#elements-container-1 {
+    width: 15%;
+    height: 78%;
+    padding-top: 2%;
     text-align: center;
-    display: table;
-    vertical-align: middle;
+}
+#elements-container-2 {
+    width: 70%;
+    height: 19.5%;
+    left: 15%;
+    padding-top:1%;
+    text-align: center;
+}
+
+#elements-container-2 img {
+    padding: 7.5%;
+}
+
+#elements-container-3 {
+    width: 15%;
+    height: 78%;
+    left: 85%;
+    padding-top: 2%;
+    text-align: center;
+}
+
+.primary-elements {
+    width: 70px;
+    height: 70px;
+}
+
+.clicker {
+    position: absolute;
 }
 
 .element-img {
@@ -167,3 +165,12 @@ img {
     vertical-align: middle;
     display: inline-block;
 }
+
+#toc div {
+    padding-bottom: 3px;
+}
+
+a.tome-links:link       { color: #010101; text-decoration: none; font-size: 17px; }
+a.tome-links:visited    { color: #010101; text-decoration: none; }
+a.tome-links:hover      { color: #010101; text-decoration: none; border-bottom: 1px dotted #010101; }
+

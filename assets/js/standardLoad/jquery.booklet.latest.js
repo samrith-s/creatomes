@@ -2106,8 +2106,8 @@
         tabs: false,                           // adds tabs along the top of the pages
         tabWidth: 60,                              // set the width of the tabs
         tabHeight: 20,                              // set the height of the tabs
-        nextControlText: 'Next',                          // inline text for all 'next' controls
-        previousControlText: 'Previous',                      // inline text for all 'previous' controls
+        nextControlText: 'NEXT',                          // inline text for all 'next' controls
+        previousControlText: 'PREVIOUS',                      // inline text for all 'previous' controls
         nextControlTitle: 'Next Page',                     // text for title attributes of all 'next' controls
         previousControlTitle: 'Previous Page',                 // text for title attributes of all 'previous' controls
         arrows: false,                           // adds arrow overlays over the book edges
