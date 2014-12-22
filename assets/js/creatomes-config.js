@@ -3,6 +3,9 @@ var config = {};
 
 config.imagePath = "assets/img/";
 
+config.initMana = 0;
+config.initPower = 0;
+
 config.launchpad = {
     type: "environment",
     states: [
@@ -24,7 +27,10 @@ config.launchpad = {
 config.mainPage = {
     type: "environment",
     states: [
-        {name: "default", representation: "<img src='http://www.hdwallpapersinn.com/wp-content/uploads/2014/11/fantasy-world-artwork-art-background-wallpapers-images-array-wallwuzz-hd-wallpaper-5273.jpg'/>"}
+        {
+            name: "default",
+            representation: "<img id='mainPageBg' src='http://www.hdwallpapersinn.com/wp-content/uploads/2014/11/fantasy-world-artwork-art-background-wallpapers-images-array-wallwuzz-hd-wallpaper-5273.jpg'/>"
+        }
     ],
     locations:
         function() {
@@ -60,6 +66,28 @@ config.mainPage = {
 
             return allItems;
         }()
+}
+
+config.createScreen = {
+    type: "environment",
+    states: [
+        {
+            name: "default",
+            representation: "<img src='http://www.hdwallpapersinn.com/wp-content/uploads/2014/11/fantasy-world-artwork-art-background-wallpapers-images-array-wallwuzz-hd-wallpaper-5273.jpg'/>"
+        }
+    ],
+    locations: [
+        {name: "info-panel", states: [
+            {name: "default", representation: ""}
+        ]},
+        {name: "brew-pot", states: [
+            {name: "default", representation: ""}
+        ]},
+        {name: "elements-container", states: [
+            {name: "default", representation: ""}
+        ]}
+    ]
+
 }
 
 config.brewPot = {

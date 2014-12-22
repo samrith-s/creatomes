@@ -31,14 +31,16 @@
    	/* Page Wrappers */
 	.booklet .b-wrap       {top:0; position:absolute;}
 	.booklet .b-wrap-left  {
-        background:url('http://fc03.deviantart.net/fs70/f/2011/151/6/0/parchment_texture_stock_by_lemurianwanderer-d3hp2uf.jpg');
+        background:url('http://narcissuschronicles.files.wordpress.com/2012/09/texture.jpg');
         background-size: cover;
         background-position: center;
+        padding: 15px;
     }
 	.booklet .b-wrap-right {
-        background:url('http://fc03.deviantart.net/fs70/f/2011/151/6/0/parchment_texture_stock_by_lemurianwanderer-d3hp2uf.jpg');
+        background:url('http://narcissuschronicles.files.wordpress.com/2012/09/texture.jpg');
         background-size: cover;
         background-position: center;
+        padding: 15px;
     }
 	
 	.booklet .b-pN .b-wrap,
