@@ -77,7 +77,7 @@ function initCreateScreen(uID) {
     for(var n=3; n>0; n--) {
         for(var i=0; i<5; i++) {
             var cur = prime.pop();
-            var temp = $("#element-" + cur.name);
+            var temp = $("#element" + cur.name);
             temp.attr("uID", cur.sequence);
             if(n==3) { lx = 5; ly = 2 + (i*16); }
             if(n==2) { lx = 19 + (i*13); ly = 2; }
@@ -97,37 +97,68 @@ function playGame(uID, brewPotStr) {
 
     var creatable = $getElemBySeq(uID);
 
+    var init = 1;
+
     $(".primary-elements").unbind('click').on('click', function() {
-        var temp = $(this).clone().appendTo($(this).parent()).addClass("this-clone-" + $(this).attr("id"));
+
+        var temp;
         var thisElem = $("#" + $(this).attr("id"));
         var uID = thisElem.attr("uID");
         console.log(thisElem);
         var pos;
         if(!thisElem.hasClass("less-opacity")) {
+            temp = $(this).clone().appendTo($(this).parent()).addClass("clone-anim this-clone-" + $(this).attr("id") + " clone-" + init);
             thisElem.addClass("less-opacity");
-            pos = $("#animate-reference").position();
+
+            pos = $("#animate-reference-" + init).position();
+
+            if(init<5) {
+                init++;
+            }
+
+            console.log(init);
+
             temp.animate({
                 top: pos.top,
-                left: pos.left
+                left: pos.left,
+                width: "40px",
+                height: "40px"
                 //            height: "toggle",
                 //            width: "toggle"
             }, 500, "swing", function() {
-                temp.fadeOut();
+//                temp.fadeOut();
                 brewPotStr = $setCharAt(brewPotStr, (parseInt(uID)-1), "1");
             });
         }
         else {
-            pos = thisElem.position();
+
+            init = $(".clone-anim").length + 1;
+
             temp = $(".this-clone-" + $(this).attr("id"));
             temp.fadeIn();
+//            init =
+
+            pos = thisElem.position();
             setTimeout(function() {
                 temp.animate({
                     top: pos.top,
-                    left: pos.left
+                    left: pos.left,
+                    width: "75px",
+                    height: "75px"
                 }, 500, "swing", function() {
                     temp.remove();
+                    console.log("temp removed!");
+//                    thisElem.removeClass(".clone-*");
                     thisElem.removeClass("less-opacity");
-//                    thisElem.css({opacity:1});
+                    init = $(".clone-anim").length+1;
+                    for(var i=0; i<$(".clone-anim").length; i++)
+                    {
+                        pos = $("#animate-reference-" + (i+1)).position();
+                        $(".clone-anim").eq(i).animate({
+                            top: pos.top,
+                            left: pos.left
+                        }, 500);
+                    }
                     brewPotStr = $setCharAt(brewPotStr, parseInt(uID)-1, "0");
                 });
             }, 400);
@@ -137,12 +168,32 @@ function playGame(uID, brewPotStr) {
     $("#brew-button").unbind('click').on('click', function() {
         console.log("The Combo: " + creatable.combo);
         console.log("The Brewpot's String: " + brewPotStr);
+
         if(brewPotStr == creatable.combo) {
-            $("#brew-pot").effect("bounce", 1500);
+            var pos = $("#animate-reference").position()
+            $(".clone-anim").animate({
+                top: pos.top,
+                left: pos.left
+            }, 1500, "swing", function() {
+                $(".clone-anim").fadeOut();
+            });
             console.log("Brew IF!");
         }
         else {
-            $("#brew-pot").effect("blink", 1500);
+            var pos = $("#animate-reference").position();
+            $(".clone-anim").animate({
+                top: pos.top,
+                left: pos.left
+            }, 1500, "swing", function() {
+                for(var i=0; i<$(".clone-anim").length; i++) {
+                    var tmp = $(".clone-anim").eq(i);
+                    var pos = $("#animate-reference-" + (i+1)).position();
+                    tmp.animate({
+                        top: pos.top,
+                        left: pos.left
+                    }, 700, "easeOutBounce");
+                }
+            });
             console.log("Brew ELSE!")
         }
     })
