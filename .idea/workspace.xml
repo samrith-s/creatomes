@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="751f21b1-7801-406b-af69-631d16693375" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/creatomes-config.js" afterPath="$PROJECT_DIR$/assets/js/creatomes-config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/creatomes-main.js" afterPath="$PROJECT_DIR$/assets/js/creatomes-main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/img/alchemycircle.png" afterPath="$PROJECT_DIR$/assets/img/alchemycircle.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/creatomes-style.css" afterPath="$PROJECT_DIR$/assets/css/creatomes-style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="creatomes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -13,7 +11,7 @@
     <file path="/index.html" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418901123932" ignored="false" />
     <file path="/creatomes-config.js" changelist="751f21b1-7801-406b-af69-631d16693375" time="1419319499332" ignored="false" />
     <file path="/creatomes-main.js" changelist="751f21b1-7801-406b-af69-631d16693375" time="1419336562875" ignored="false" />
-    <file path="/creatomes-style.css" changelist="751f21b1-7801-406b-af69-631d16693375" time="1419329652141" ignored="false" />
+    <file path="/creatomes-style.css" changelist="751f21b1-7801-406b-af69-631d16693375" time="1419345170639" ignored="false" />
     <file path="/creatomes-data.js" changelist="751f21b1-7801-406b-af69-631d16693375" time="1419234433549" ignored="false" />
     <file path="/jquery.booklet.latest.css" changelist="751f21b1-7801-406b-af69-631d16693375" time="1418967976711" ignored="false" />
     <file path="/jquery.booklet.latest.js" changelist="751f21b1-7801-406b-af69-631d16693375" time="1419235874365" ignored="false" />
@@ -39,7 +37,7 @@
       <file leaf-file-name="creatomes-main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/creatomes-main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="193" column="26" selection-start="5840" selection-end="5840" vertical-scroll-proportion="-15.903226">
+            <state line="150" column="42" selection-start="4142" selection-end="4142" vertical-scroll-proportion="-12.5161295">
               <folding>
                 <element signature="e#54#446#0" expanded="false" />
                 <element signature="n#!!block;n#initGame#0" expanded="false" />
@@ -51,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="creatomes-config.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="creatomes-config.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/creatomes-config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="134" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.32387313">
+            <state line="45" column="134" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -69,10 +67,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="creatomes-style.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="creatomes-style.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/css/creatomes-style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="21" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.0">
+            <state line="128" column="48" selection-start="2256" selection-end="2256" vertical-scroll-proportion="0.89649415">
               <folding />
             </state>
           </provider>
@@ -112,9 +110,9 @@
         <option value="$PROJECT_DIR$/assets/js/standardLoad/jquery.booklet.latest.js" />
         <option value="$PROJECT_DIR$/assets/js/creatomes-data.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/assets/css/creatomes-style.css" />
         <option value="$PROJECT_DIR$/assets/js/creatomes-main.js" />
         <option value="$PROJECT_DIR$/assets/js/creatomes-config.js" />
+        <option value="$PROJECT_DIR$/assets/css/creatomes-style.css" />
       </list>
     </option>
   </component>
@@ -494,7 +492,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/creatomes-main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="26" selection-start="5840" selection-end="5840" vertical-scroll-proportion="-15.903226">
+        <state line="150" column="42" selection-start="4142" selection-end="4142" vertical-scroll-proportion="-12.5161295">
           <folding>
             <element signature="e#54#446#0" expanded="false" />
             <element signature="n#!!block;n#initGame#0" expanded="false" />
@@ -505,16 +503,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/creatomes-style.css">
+    <entry file="file://$PROJECT_DIR$/assets/js/creatomes-config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="21" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.0">
+        <state line="45" column="134" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/creatomes-config.js">
+    <entry file="file://$PROJECT_DIR$/assets/css/creatomes-style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="134" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.32387313">
+        <state line="128" column="48" selection-start="2256" selection-end="2256" vertical-scroll-proportion="0.89649415">
           <folding />
         </state>
       </provider>

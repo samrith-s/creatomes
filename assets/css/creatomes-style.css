@@ -108,7 +108,7 @@ img {
 }
 
 #brew-pot {
-    height: 60%;
+    height: 65%;
     width: 50%;
     top:30%;
     left: 25%;
@@ -123,12 +123,12 @@ img {
     /*visibility: hidden;*/
 }
 
-#animate-reference      { top:56.5%;    left: 46.25%; }
-#animate-reference-1    { top: 32%;     left: 46.5%; }
-#animate-reference-2    { top: 50.5%;   left: 65%;  }
-#animate-reference-3    { top: 76.25%;  left: 58%;  }
-#animate-reference-4    { top: 76.25%;  left: 35.5%;}
-#animate-reference-5    { top: 50.5%;   left: 29%;  }
+#animate-reference      { top:58.5%;    left: 46.25%; }
+#animate-reference-1    { top: 32.5%;   left: 47.35%; }
+#animate-reference-2    { top: 51%;   left: 66.5%;  }
+#animate-reference-3    { top: 80.25%;  left: 60%;  }
+#animate-reference-4    { top: 80.25%;  left: 34%;}
+#animate-reference-5    { top: 51%;   left: 27.15%;  }
 
 .primary-elements {
     width: 70px;
