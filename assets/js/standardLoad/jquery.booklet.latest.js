@@ -1437,7 +1437,7 @@
                             hash--
                         }
 
-                        document.title = options.name + options.hashTitleText + (hash + 1);
+                        //document.title = options.name + options.hashTitleText + (hash + 1);
 
                         if (!isBusy) {
                             goToPage(hash);

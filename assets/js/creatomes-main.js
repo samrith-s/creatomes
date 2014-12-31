@@ -1,5 +1,6 @@
 
 var launchpad, mainPage, createScreen;
+var completed = [];
 
 $(function() {
 
@@ -20,9 +21,6 @@ $(function() {
         $("#mainPage").fadeIn();
         initTome();
     });
-
-
-
 });
 
 function initGame() {
@@ -56,6 +54,9 @@ function initTome() {
         );
     }
 
+    for(var i=0; i<completed.length; i++)
+        $(completed[i]).css({textDecoration: "line-through"});
+
     $tome.booklet({
         tabs: true,
         hash: true
@@ -86,7 +87,6 @@ function initCreateScreen(uID) {
     for(var n=3; n>0; n--) {
         for(var i=0; i<5; i++) {
             cur = prime.pop();
-//            console.log(cur);
             tmp = $("#element" + cur.name);
             tmp.attr("uid", cur.sequence);
             if(n==3) { lx = 5; ly = 2 + (i*16); }
@@ -139,8 +139,6 @@ function playGame(uID, brewPotStr) {
             if(init<6)
                 init++;
 
-            console.log(init);
-
             temp.animate({
                 top: pos.top,
                 left: pos.left,
@@ -167,8 +165,6 @@ function playGame(uID, brewPotStr) {
                     height: "75px"
                 }, 500, "swing", function() {
                     temp.remove();
-                    console.log("temp removed!");
-//                    thisElem.removeClass(".clone-*");
                     thisElem.removeClass("less-opacity");
                     init = $(".clone-anim").length+1;
                     for(var i=0; i<$(".clone-anim").length; i++)
@@ -192,15 +188,17 @@ function playGame(uID, brewPotStr) {
         if(brewPotStr == creatable.combo) {
             var pos = $("#animate-reference").position()
             $(".clone-anim").animate({
-
+                top: pos.top,
+                left: pos.left
             }, 1500, "swing", function() {
                 $(".clone-anim").fadeOut();
             });
 
             setTimeout(function() {
+                completed.push("#elem-" + uID);
                 initTome();
-                $("#elem-" + uID).css({textDecoration: "line-through"});
                 $(".primary-elements").removeClass("less-opacity");
+                $(".clone-anim").remove();
             }, 1500);
 
 
