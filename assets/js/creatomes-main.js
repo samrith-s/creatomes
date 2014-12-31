@@ -11,12 +11,16 @@ $(function() {
     loadConfig(mainPage);
     loadConfig(createScreen);
 
+    $("img").mousedown(function(){
+        return false;
+    });
 
     $("#start span").unbind('click').on("click", function() {
         $("#launchpad").fadeOut();
         $("#mainPage").fadeIn();
         initTome();
     });
+
 
 
 });
@@ -26,6 +30,9 @@ function initGame() {
 }
 
 function initTome() {
+    console.log("Init tome!");
+    $("#createScreen").fadeOut();
+    $("#mainPage").fadeIn();
     $tome = $("#tome");
     $tome.fadeIn(1500);
 
@@ -35,11 +42,10 @@ function initTome() {
 
     for(var i=0; i<elements.selected.length; i++) {
         var pgNo = 3 + parseInt(i);
-
-        $("#toc").append("<div>" +
-            "<a href='#/page/" + pgNo + "' class='tome-links less-opacity'>" + elements.selected[i] + "</a></div>");
-
         var elem = $getElemByName(elements.selected[i]);
+
+        $("#toc").append("<div id='elem-" + elem.sequence + "'>" +
+            "<a href='#/page/" + pgNo + "' class='tome-links'>" + elements.selected[i] + "</a></div>");
 
         $tome.append(
             "<div div align='center'>" +
@@ -50,15 +56,13 @@ function initTome() {
         );
     }
 
-    $("#toc div").find("a").eq(0).removeClass("less-opacity");
-
     $tome.booklet({
         tabs: true,
         hash: true
     });
 
     $(".create-btn").unbind('click').on('click', function() {
-        var uID = $(this).attr("uID");
+        var uID = $(this).attr("uid");
         initCreateScreen(uID);
     });
 
@@ -66,8 +70,13 @@ function initTome() {
 
 function initCreateScreen(uID) {
     console.log("Init Create Screen");
-    var prime = elements.primary;
+    var prime = [];
+    for(i in elements.primary)
+        prime.push(elements.primary[i]);
+
     var brewPotStr = "000000000000000";
+    var cur;
+    var tmp;
 
     console.log(uID);
 
@@ -76,14 +85,15 @@ function initCreateScreen(uID) {
 
     for(var n=3; n>0; n--) {
         for(var i=0; i<5; i++) {
-            var cur = prime.pop();
-            var temp = $("#element" + cur.name);
-            temp.attr("uID", cur.sequence);
+            cur = prime.pop();
+//            console.log(cur);
+            tmp = $("#element" + cur.name);
+            tmp.attr("uid", cur.sequence);
             if(n==3) { lx = 5; ly = 2 + (i*16); }
             if(n==2) { lx = 19 + (i*13); ly = 2; }
             if(n==1) { lx = 85; ly = 2 + (i*16); }
-            temp.addClass("primary-elements");
-            temp.css({
+            tmp.addClass("primary-elements");
+            tmp.css({
                 top: parseInt(ly) + "%",
                 left: parseInt(lx) + "%"
             })
@@ -96,8 +106,22 @@ function initCreateScreen(uID) {
 function playGame(uID, brewPotStr) {
 
     var creatable = $getElemBySeq(uID);
-
     var init = 1;
+
+    setInterval(function() {
+        if(init<6) {
+            $(".primary-elements").removeClass("no-click");
+        }
+        else {
+            for(var i=0; i<$(".primary-elements").length; i++) {
+                var t = $(".primary-elements").eq(i);
+                if(!t.hasClass("less-opacity"))
+                    t.addClass("no-click");
+                else
+                    t.removeClass("no-click");
+            }
+        }
+    }, 100);
 
     $(".primary-elements").unbind('click').on('click', function() {
 
@@ -112,9 +136,8 @@ function playGame(uID, brewPotStr) {
 
             pos = $("#animate-reference-" + init).position();
 
-            if(init<5) {
+            if(init<6)
                 init++;
-            }
 
             console.log(init);
 
@@ -123,8 +146,6 @@ function playGame(uID, brewPotStr) {
                 left: pos.left,
                 width: "40px",
                 height: "40px"
-                //            height: "toggle",
-                //            width: "toggle"
             }, 500, "swing", function() {
 //                temp.fadeOut();
                 brewPotStr = $setCharAt(brewPotStr, (parseInt(uID)-1), "1");
@@ -136,7 +157,6 @@ function playGame(uID, brewPotStr) {
 
             temp = $(".this-clone-" + $(this).attr("id"));
             temp.fadeIn();
-//            init =
 
             pos = thisElem.position();
             setTimeout(function() {
@@ -172,11 +192,18 @@ function playGame(uID, brewPotStr) {
         if(brewPotStr == creatable.combo) {
             var pos = $("#animate-reference").position()
             $(".clone-anim").animate({
-                top: pos.top,
-                left: pos.left
+
             }, 1500, "swing", function() {
                 $(".clone-anim").fadeOut();
             });
+
+            setTimeout(function() {
+                initTome();
+                $("#elem-" + uID).css({textDecoration: "line-through"});
+                $(".primary-elements").removeClass("less-opacity");
+            }, 1500);
+
+
             console.log("Brew IF!");
         }
         else {
@@ -207,6 +234,9 @@ $setCharAt = function (str,index,chr) {
 }
 $getElemByName = function(name) {
     var elem = [];
+
+    for(var i=0; i<elements.primary.length; i++)
+        elem.push(elements.primary[i]);
 
     for(var i=0; i<elements.creatables.length; i++)
         elem.push(elements.creatables[i]);

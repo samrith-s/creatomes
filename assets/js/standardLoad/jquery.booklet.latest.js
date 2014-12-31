@@ -486,7 +486,7 @@
 
                 // set booklet opts.name
                 if (options.name) {
-                    document.title = options.name;
+                    //document.title = options.name;
                 } else {
                     options.name = document.title;
                 }
