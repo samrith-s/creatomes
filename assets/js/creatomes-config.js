@@ -82,7 +82,10 @@ config.createScreen = {
                 {name: "default", representation: ""}
             ]});
             allLevels.push({name: "brew-button", states: [
-                {name: "default", representation: "BREW!"}
+                {name: "default", representation: "<span>CREATE!</span>"}
+            ]});
+            allLevels.push({name: "stageComplete", states: [
+                {name: "default", representation: "<div><p></p><img src=''></img><span>Continue!</span>"}
             ]});
                 return allLevels;
             }()

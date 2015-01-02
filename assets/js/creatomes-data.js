@@ -2,12 +2,13 @@ elements = {}
 
 $path_basic         = "assets/img/" + "elements/";
 $path_creatables    = "assets/img/" + "creatables/";
+$path_extension     = ".png";
 
 //selected elements
 elements.selected =
     [
         "Worlds",
-        "Basilisk",
+        "Graven",
         "Unicorn",
         "Sapien",
         "Dartan",
@@ -105,7 +106,9 @@ elements.creatables = [
         name: "Worlds",
         image: $path_creatables + "worlds.png",
         combo: "001111000000000",
-        lore: "The dark empty universe began seeing worlds of blue and brown.",
+        lore: "The dark empty universe began seeing worlds of blue and brown, with swift winds and sunlight.",
+        main_elem: "space",
+        num_elem: 4,
         reward: 10
     },
     {
@@ -114,6 +117,8 @@ elements.creatables = [
         image: $path_creatables + "lava.png",
         combo: "101000000000000",
         lore: "It bubbled at the centre of the world, created from fiery rock.",
+        main_elem: "fire",
+        num_elem: 2,
         reward: 10
     },
     {
@@ -122,6 +127,8 @@ elements.creatables = [
         image: $path_creatables + "wood.png",
         combo: "000000000001100",
         lore: "Obtained from the first form of life and its destruction.",
+        main_elem: "tree",
+        num_elem: 2,
         reward: 10
     },
     {
@@ -130,6 +137,8 @@ elements.creatables = [
         image: $path_creatables + "vapour.png",
         combo: "110000000000000",
         lore: "The union of two opposing basic elements resulted in steam.",
+        main_elem: "water",
+        num_elem: 2,
         reward: 10
     },
     {
@@ -138,6 +147,8 @@ elements.creatables = [
         image: $path_creatables + "pyrocles.png",
         combo: "110000000000010",
         lore: "When life was bestowed to steam, Pyrocles were born.",
+        main_elem: "water",
+        num_elem: 3,
         reward: 10
     },
     {
@@ -146,6 +157,8 @@ elements.creatables = [
         image: $path_creatables + "minotaur.png",
         combo: "100000010101000",
         lore: "The Minotaur was born from the fiery ashes of dead beasts, reinforced with armor for skin, having a heart of evil.",
+        main_elem: "darkonium",
+        num_elem: 4,
         reward: 10
     },
     {
@@ -154,6 +167,8 @@ elements.creatables = [
         image: $path_creatables + "leviathan.png",
         combo: "010000010100000",
         lore: "From the sea it was born, devouring ships of steel, for it too was made of such a strong substance.",
+        main_elem: "water",
+        num_elem: 3,
         reward: 10
     },
     {
@@ -162,6 +177,8 @@ elements.creatables = [
         image: $path_creatables + "basilisk.png",
         combo: "001000010010000",
         lore: "Poison and evil energy combined to create the king of serpents - The Basilisk.",
+        main_elem: "earth",
+        num_elem: 3,
         reward: 10
     },
     {

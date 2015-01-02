@@ -1,6 +1,23 @@
+jQuery.fn.center = function(parent) {
+    if (parent) {
+        parent = this.parent();
+    } else {
+        parent = window;
+    }
+    this.css({
+        "position": "absolute",
+        "zIndex":   2,
+        "top": ((($(parent).height() - this.outerHeight()) / 2) + $(parent).scrollTop() + "px"),
+        "left": ((($(parent).width() - this.outerWidth()) / 2) + $(parent).scrollLeft() + "px")
+    });
+    return this;
+}
 
 var launchpad, mainPage, createScreen;
-var completed = [];
+
+var completed   = [];
+completed.toc   = [];
+completed.indiv = [];
 
 $(function() {
 
@@ -29,7 +46,6 @@ function initGame() {
 
 function initTome() {
     console.log("Init tome!");
-    $("#createScreen").fadeOut();
     $("#mainPage").fadeIn();
     $tome = $("#tome");
     $tome.fadeIn(1500);
@@ -46,7 +62,7 @@ function initTome() {
             "<a href='#/page/" + pgNo + "' class='tome-links'>" + elements.selected[i] + "</a></div>");
 
         $tome.append(
-            "<div div align='center'>" +
+            "<div id='item-" + elem.sequence + "'align='center'>" +
                 "<h1>" + elem.name + "</h1>" +
                 "<img src='"  + elem.image + "' />" +
                 "<p class='create-btn' uID='" + elem.sequence + "'>CREATE THIS!</p>" +
@@ -54,8 +70,33 @@ function initTome() {
         );
     }
 
-    for(var i=0; i<completed.length; i++)
-        $(completed[i]).css({textDecoration: "line-through"});
+    for(var i=0; i<completed.toc.length; i++)
+        $(completed.toc[i]).css({textDecoration: "line-through"});
+
+    for(var i=0; i<completed.indiv.length; i++)
+    {
+        var _this = completed.indiv[i] + " .create-btn";
+        var uid = $(_this).attr("uid");
+        var elem = $getElemBySeq(uid);
+        var str = elem.combo;
+        var tmparr = [];
+
+        for(var j=0; j<elem.combo.length; j++) {
+            if(str[j]!=0)
+                tmparr.push(j+1);
+        }
+
+        $(_this).empty();
+        for(var k=0; k<tmparr.length; k++) {
+            var ret = $.grep(elements.primary, function( n, i ) {
+                return n.sequence == tmparr[k];
+            });
+            ret = ret[0];
+            $(_this).append("<img src='" + ret.image + "' />");
+        }
+
+        $(_this).addClass("no-click");
+    }
 
     $tome.booklet({
         tabs: true,
@@ -70,7 +111,6 @@ function initTome() {
 }
 
 function initCreateScreen(uID) {
-    console.log("Init Create Screen");
     var prime = [];
     for(i in elements.primary)
         prime.push(elements.primary[i]);
@@ -78,8 +118,6 @@ function initCreateScreen(uID) {
     var brewPotStr = "000000000000000";
     var cur;
     var tmp;
-
-    console.log(uID);
 
     $("#tome").effect("drop");
     setTimeout(function() { $("#mainPage").fadeOut(); $("#createScreen").fadeIn(); }, 400);
@@ -109,6 +147,12 @@ function playGame(uID, brewPotStr) {
     var init = 1;
 
     setInterval(function() {
+
+        if(init==1)
+            $("#brew-button").addClass("no-click");
+        else
+            $("#brew-button").removeClass("no-click");
+
         if(init<6) {
             $(".primary-elements").removeClass("no-click");
         }
@@ -121,15 +165,22 @@ function playGame(uID, brewPotStr) {
                     t.removeClass("no-click");
             }
         }
-    }, 100);
+    }, 1);
 
+    /* PRIMARY ELEMENTS -------------
+    /* Primary Elements click options.
+    /* All the onClick functions for all the primary
+    /* elements are being handled within this chunk of code
+     -------------------------------- */
     $(".primary-elements").unbind('click').on('click', function() {
 
         var temp;
         var thisElem = $("#" + $(this).attr("id"));
         var uID = thisElem.attr("uID");
-        console.log(thisElem);
         var pos;
+
+        $("#brew-button").removeClass("no-click");
+
         if(!thisElem.hasClass("less-opacity")) {
             temp = $(this).clone().appendTo($(this).parent()).addClass("clone-anim this-clone-" + $(this).attr("id") + " clone-" + init);
             thisElem.addClass("less-opacity");
@@ -181,12 +232,18 @@ function playGame(uID, brewPotStr) {
         }
     });
 
+    /* BREW BUTTON -------------------
+    /* Brew Button click options.
+    /* All the onClick functions for the brew button are being handled
+    /* within this chunk of code.
+      -------------------------------- */
+    $("#brew-button").fadeIn().addClass("no-click");
     $("#brew-button").unbind('click').on('click', function() {
-        console.log("The Combo: " + creatable.combo);
-        console.log("The Brewpot's String: " + brewPotStr);
+
+        $(this).fadeOut(500);
 
         if(brewPotStr == creatable.combo) {
-            var pos = $("#animate-reference").position()
+            var pos = $("#animate-reference").position();
             $(".clone-anim").animate({
                 top: pos.top,
                 left: pos.left
@@ -195,14 +252,12 @@ function playGame(uID, brewPotStr) {
             });
 
             setTimeout(function() {
-                completed.push("#elem-" + uID);
-                initTome();
+                completed.toc.push("#elem-" + uID);
+                completed.indiv.push("#item-" + uID);
+                victory(uID);
                 $(".primary-elements").removeClass("less-opacity");
                 $(".clone-anim").remove();
-            }, 1500);
-
-
-            console.log("Brew IF!");
+            }, 1900);
         }
         else {
             var pos = $("#animate-reference").position();
@@ -216,13 +271,58 @@ function playGame(uID, brewPotStr) {
                     tmp.animate({
                         top: pos.top,
                         left: pos.left
-                    }, 700, "easeOutBounce");
+                    }, 700, "easeOutBounce", function() { $("#brew-button").fadeIn(); });
                 }
             });
-            console.log("Brew ELSE!")
         }
     })
 
+}
+
+function victory(uID) {
+    var tmp = $getElemBySeq(uID);
+    var now = 0;
+    $("#stageComplete img").attr("src", tmp.image);
+    $("#stageComplete div p").text(tmp.name);
+    $("#stageComplete").show();
+
+    $("#stageComplete").animate(
+        {
+            width: "100%",
+            height: "100%"
+        },
+        {
+            step: function() { $(this).center(true); },
+            duration: 1000,
+            complete: function() {
+                $("#stageComplete").animate(
+                    { background: "rgba(1,1,1,1)" },
+                    {
+                        step: function() {
+                                now = now+0.015;
+                                $(this).css({background: "rgba(1,1,1," + now + ")"});
+                            },
+                        duration: 750
+                    }
+                );
+            }
+        }
+    );
+
+    $("#stageComplete div").animate(
+        { width: "50%" },
+        {
+            step: function() { $(this).center(true) },
+            duration: 1000
+        }
+    );
+
+    $("#stageComplete span").unbind('click').on('click', function() {
+        $("#stageComplete").fadeOut();
+        setTimeout(function() { $("#createScreen").effect("drop", 750) }, 400);
+        setTimeout(function() { initTome(); }, 400);
+
+    });
 }
 
 /*------- Helper functions ---------- */
@@ -230,6 +330,7 @@ $setCharAt = function (str,index,chr) {
     if(index > str.length-1) return str;
     return str.substr(0,index) + chr + str.substr(index+1);
 }
+
 $getElemByName = function(name) {
     var elem = [];
 
@@ -244,6 +345,7 @@ $getElemByName = function(name) {
     });
     return ret[0];
 }
+
 $getElemBySeq = function(uID) {
     var elem = [];
 
