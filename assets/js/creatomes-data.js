@@ -257,7 +257,7 @@ elements.creatables = [
         sequence: 18,
         name: "Atlantean",
         image: $path_creatables + "atlantean.png",
-        combo: "10100000",
+        combo: "01000",
         lore: "Born in the depths of the ocean from calcified endoskeletons.",
         reward: 10
     },
@@ -397,4 +397,20 @@ elements.creatables = [
         lore: "A broadsword filled with evil, legend said it was embedded in a substance stronger and slower than most.",
         reward: 10
     }
+];
+
+howto = {}
+howto.data = [
+    {
+        loc: "elementFire",
+        description: "<span>This is Div A</span>",
+        sequence: 0
+    },
+    {
+        loc: "brew-button",
+        description: "<span>Div B This is Div B This is Div B This is Div B This is Div B This is Div B </span>",
+        sequence: 1
+    }
+//    {loc: "divc", description: "<span>This is Div C</span>", sequence: 3},
+//    {loc: "divb", description: "<img src='img/arrow.png'/>", sequence: 10}
 ];

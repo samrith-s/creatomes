@@ -13,7 +13,7 @@ jQuery.fn.center = function(parent) {
     return this;
 }
 
-var launchpad, mainPage, createScreen;
+var launchpad, mainPage, createScreen, mana, player;
 
 var completed   = [];
 completed.toc   = [];
@@ -24,6 +24,11 @@ $(function() {
     launchpad = new Environment("launchpad");
     mainPage = new Environment("mainPage");
     createScreen = new Environment("createScreen");
+
+    mana = new Currency("mana");
+    player = new Entity("Player");
+
+    player.createWallet(mana, 0, 100, 10);
 
     loadConfig(launchpad);
     loadConfig(mainPage);
@@ -138,6 +143,11 @@ function initCreateScreen(uID) {
         }
     }
 
+    setTimeout(function() {
+        $("#brew-button").fadeIn();
+        initHowto(howto.data);
+    }, 1500);
+
     playGame(uID, brewPotStr);
 }
 
@@ -146,8 +156,9 @@ function playGame(uID, brewPotStr) {
     var creatable = $getElemBySeq(uID);
     var init = 1;
 
-    setInterval(function() {
+    var checkr = setInterval(function() {
 
+        console.log("Checking at regular intervals");
         if(init==1)
             $("#brew-button").addClass("no-click");
         else
@@ -165,7 +176,7 @@ function playGame(uID, brewPotStr) {
                     t.removeClass("no-click");
             }
         }
-    }, 1);
+    }, 250);
 
     /* PRIMARY ELEMENTS -------------
     /* Primary Elements click options.
@@ -254,7 +265,7 @@ function playGame(uID, brewPotStr) {
             setTimeout(function() {
                 completed.toc.push("#elem-" + uID);
                 completed.indiv.push("#item-" + uID);
-                victory(uID);
+                victory(uID, checkr);
                 $(".primary-elements").removeClass("less-opacity");
                 $(".clone-anim").remove();
             }, 1900);
@@ -275,16 +286,20 @@ function playGame(uID, brewPotStr) {
                 }
             });
         }
-    })
+    });
+
+
 
 }
 
-function victory(uID) {
+function victory(uID, checkr) {
     var tmp = $getElemBySeq(uID);
     var now = 0;
     $("#stageComplete img").attr("src", tmp.image);
     $("#stageComplete div p").text(tmp.name);
     $("#stageComplete").show();
+
+    clearInterval(checkr);
 
     $("#stageComplete").animate(
         {
@@ -319,9 +334,16 @@ function victory(uID) {
 
     $("#stageComplete span").unbind('click').on('click', function() {
         $("#stageComplete").fadeOut();
-        setTimeout(function() { $("#createScreen").effect("drop", 750) }, 400);
-        setTimeout(function() { initTome(); }, 400);
+        setTimeout(function() {
+            $("#stageComplete").css({
+                background: "transparent",
+                height: "0%",
+                width: "0%"
+            });
 
+            $("#createScreen").effect("drop", 750)
+        }, 400);
+        setTimeout(function() { initTome(); }, 400);
     });
 }
 
@@ -356,4 +378,8 @@ $getElemBySeq = function(uID) {
         return n.sequence == uID;
     });
     return ret[0];
+}
+
+$getRandBetween = function(min, max) {
+    return Math.floor((Math.random() * (max-min)) + min);
 }

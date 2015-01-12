@@ -85,22 +85,8 @@ config.createScreen = {
                 {name: "default", representation: "<span>CREATE!</span>"}
             ]});
             allLevels.push({name: "stageComplete", states: [
-                {name: "default", representation: "<div><p></p><img src=''></img><span>Continue!</span>"}
+                {name: "default", representation: "<div><p></p><img src='' /><span>Continue!</span>"}
             ]});
                 return allLevels;
             }()
-//
-//        {name: "elements-container-1", states: [
-//            {name: "default", representation: ""}
-//        ]},
-//        {name: "elements-container-2", states: [
-//            {name: "default", representation: ""}
-//        ]},
-//        {name: "elements-container-3", states: [
-//            {name: "default", representation: ""}
-//        ]},
-//        {name: "animate-reference", states: [
-//            {name: "default", representation: ""}
-//        ]}
-//    ]
 }

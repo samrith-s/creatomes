@@ -103,8 +103,8 @@ img {
 }
 
 #brew-pot {
-    height: 65%;
-    width: 50%;
+    height: 320px;
+    width: 320px;
     top:20%;
     left: 25%;
 }
@@ -114,14 +114,15 @@ img {
     height: 40px;
     position: absolute;
     visibility: hidden;
+    /*background: red;*/
 }
 
-#animate-reference, #stageComplete  { top:48.5%;    left: 46.25%; }
-#animate-reference-1                { top: 22.5%;   left: 47.35%; }
-#animate-reference-2                { top: 41%;     left: 66.35%; }
-#animate-reference-3                { top: 70%;     left: 59.75%; }
-#animate-reference-4                { top: 70.25%;  left: 34%;    }
-#animate-reference-5                { top: 41%;     left: 27.15%; }
+#animate-reference, #stageComplete  { top:49.5%;    left: 46.5%; }
+#animate-reference-1                { top: 23%;     left: 47.35%; }
+#animate-reference-2                { top: 42%;     left: 66.35%; }
+#animate-reference-3                { top: 71.5%;   left: 59.75%; }
+#animate-reference-4                { top: 71.5%;   left: 34%;    }
+#animate-reference-5                { top: 42%;     left: 27.15%; }
 
 .primary-elements {
     width: 70px;
@@ -135,11 +136,11 @@ img {
     width: 80px;
     height: 80px;
     color: white;
-    background: rgba(1,1,1,0.5);
+    /*background: rgba(1,1,1,0.5);*/
     border-radius: 50px;
     text-align: center;
     cursor: pointer;
-    top: 42%;
+    top: 42.5%;
     left: 41.5%;
     padding: 2%;
     display: table;
@@ -149,6 +150,8 @@ img {
 #brew-button span {
     display:table-cell;
     vertical-align: middle;
+    text-shadow: 2px 2px #000;
+    font-size: 25px;
 }
 
 .create-btn img { width: 40px; height: 40px; padding: 3px}
