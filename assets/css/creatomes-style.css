@@ -1,11 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
+@import url(http://fonts.googleapis.com/css?family=Comfortaa);
 
 /* -------------- Please do not change the CSS for the below elements ----------- */
 html, body {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    font-family: 'Covered By Your Grace', cursive;
+    font-family: 'Comfortaa', cursive;
 }
 
 * {
@@ -117,12 +117,12 @@ img {
     /*background: red;*/
 }
 
-#animate-reference, #stageComplete  { top:49.5%;    left: 46.5%; }
-#animate-reference-1                { top: 23%;     left: 47.35%; }
-#animate-reference-2                { top: 42%;     left: 66.35%; }
-#animate-reference-3                { top: 71.5%;   left: 59.75%; }
-#animate-reference-4                { top: 71.5%;   left: 34%;    }
-#animate-reference-5                { top: 42%;     left: 27.15%; }
+#animate-reference, #stageComplete  { top:49.5%;    left: 46.5%;    }
+#animate-reference-1                { top: 22.5%;   left: 47.30%;   }
+#animate-reference-2                { top: 41.85%;  left: 66.5%;    }
+#animate-reference-3                { top: 71.5%;   left: 59.65%;   }
+#animate-reference-4                { top: 71.7%;   left: 34%;      }
+#animate-reference-5                { top: 41.85%;  left: 27.15%;   }
 
 .primary-elements {
     width: 70px;
@@ -136,7 +136,6 @@ img {
     width: 80px;
     height: 80px;
     color: white;
-    /*background: rgba(1,1,1,0.5);*/
     border-radius: 50px;
     text-align: center;
     cursor: pointer;
@@ -151,10 +150,16 @@ img {
     display:table-cell;
     vertical-align: middle;
     text-shadow: 2px 2px #000;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .create-btn img { width: 40px; height: 40px; padding: 3px}
+.create-btn:hover { color: #750000; }
+.btns { background: #750000; color: #fff; padding: 5px; border-radius: 7px; font-size: 20px; cursor: pointer;}
+.btns:hover { background: #AB0000; color: #FFD900;}
+
+#playagain { background: #750000; color: #fff; padding: 5px; border-radius: 7px; font-size: 20px; cursor: pointer;}
+#playagain:hover { background: #AB0000; color: #FFD900;}
 
 #stageComplete {
     text-align: center;
@@ -164,6 +169,8 @@ img {
     height: 40px;
     position: absolute;
 }
+
+#stageComplete span { cursor: pointer; }
 
 .element-img {
     margin: 2.5%;
@@ -184,3 +191,94 @@ a.tome-links:link       { color: #010101; text-decoration: none; font-size: 17px
 a.tome-links:visited    { color: #010101; text-decoration: none; }
 a.tome-links:hover      { color: #010101; text-decoration: none; border-bottom: 1px dotted #010101; }
 
+
+#infoPanel {
+    top: 88%;
+    height: 32px;
+    display: table;
+    vertical-align: middle;
+    display: none;
+    padding: 2%;
+}
+
+#instruction, #exit, #creatable-name{
+    display:table-cell;
+    vertical-align:middle;
+    position: relative;
+    cursor: pointer;
+}
+
+#creatable-name, #crystalcount, #crystalimg { cursor: default; !important }
+
+#creatable-name {
+    width: 220px;
+    color: #fff;
+    padding-left: 7px;
+}
+
+#instruction, #exit {
+    height: 32px;
+    width: 32px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#lifelines {
+    height: auto;
+    width: auto;
+    top: 90.5%;
+    left: 68%;
+    display: none;
+
+}
+
+#lifeline1, #lifeline2, #lifeline3 { cursor: pointer; }
+
+#lifelines div {
+    width: 32px;
+    height: 32px;
+    margin: 0 3px;
+    position: relative;
+    float:left;
+}
+
+
+
+#messagePanel {
+    background: rgba(1,1,1,0.9);
+    display: none;
+    font-size:28px;
+}
+
+#messageText {
+    width: 350px;
+    height: auto;
+    color: #fff;
+    display: none;
+    text-align: center;
+}
+
+#messageText img {
+    width: auto;
+    vertical-align: middle;
+}
+
+#exitMsg {
+    width: auto;
+    height: auto;
+    color: #fff;
+    font-size: 18px;
+    top: 3%;
+    left: 94%;
+    padding: 0 10px;
+    background: rgba(1,1,1,1);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#exitMsg:hover {
+    background: rgba(255,255,255,1);
+    color: #000;
+}
+
+#crystalcount { text-align:right; font-size: 25px; color: #fff; }

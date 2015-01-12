@@ -90,3 +90,69 @@ config.createScreen = {
                 return allLevels;
             }()
 }
+
+config.lifelines = {
+    type: "environment",
+    states: [
+        {
+            name: "default",
+            representation: ""
+        }
+    ],
+    locations: [
+        {name: "crystalcount", states: [
+            {name: "default", representation: ""}
+        ]},
+        {name: "crystalimg", states: [
+            {name: "default", representation: "<img src='assets/img/crystals.png' />"}
+        ]},
+        {name: "lifeline1", states: [
+            {name: "default", representation: "<img src='assets/img/count.jpg' />"}
+        ]},
+        {name: "lifeline2", states: [
+            {name: "default", representation: "<img src='assets/img/lore.jpg' />"}
+        ]},
+        {name: "lifeline3", states: [
+            {name: "default", representation: "<img src='assets/img/chance.jpg' />"}
+        ]}
+    ]
+}
+
+config.infoPanel = {
+    type: "environment",
+    states: [
+        {
+            name: "default",
+            representation: ""
+        }
+    ],
+    locations: [
+        {name: "instruction", states: [
+            {name: "default", representation: "<img src='assets/img/help.png' />"}
+        ]},
+        {name: "exit", states: [
+            {name: "default", representation: "<img src='assets/img/exit.png' />"}
+        ]},
+        {name: "creatable-name", states: [
+            {name: "default", representation: ""}
+        ]}
+    ]
+}
+
+config.messagePanel = {
+    type: "environment",
+    states: [
+        {
+            name: "default",
+            representation: ""
+        }
+    ],
+    locations: [
+        {name: "messageText", states: [
+            {name: "default", representation: ""}
+        ]},
+        {name: "exitMsg", states: [
+            {name: "default", representation: "X"}
+        ]}
+    ]
+}
